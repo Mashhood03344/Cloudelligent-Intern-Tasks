@@ -22,34 +22,34 @@ Resources Created
 1.	VPC
 o	Resource Type: aws_vpc
 o	Description: Creates a VPC to host the resources, providing a secure and isolated network.
-2.	Internet Gateway
+3.	Internet Gateway
 o	Resource Type: aws_internet_gateway
 o	Description: Creates an internet gateway to provide internet access to the VPC, allowing communication with external networks.
-3.	Route Table
+4.	Route Table
 o	Resource Type: aws_route_table
 o	Description: Creates a route table to direct traffic from the VPC to the internet via the internet gateway.
 o	Route: Allows outbound traffic to all IP addresses (0.0.0.0/0).
-4.	Route Table Association
+5.	Route Table Association
 o	Resource Type: aws_route_table_association
 o	Description: Associates the public route table with the public subnet, enabling instances in the public subnet to access the internet.
-5.	Public Subnet 1
+6.	Public Subnet 1
 o	Resource Type: aws_subnet
 o	Description: Creates the first public subnet within the VPC.
 o	Properties:
 	Automatically assigns public IPs to instances launched in this subnet, facilitating internet access for those instances.
-6.	Public Subnet 2
+7.	Public Subnet 2
 o	Resource Type: aws_subnet
 o	Description: Creates the second public subnet within the VPC.
-7.	Private Subnet
+8.	Private Subnet
 o	Resource Type: aws_subnet
 o	Description: Creates a private subnet within the VPC
-8.	Security Group
+9.	Security Group
 o	Resource Type: aws_security_group
 o	Description: Creates a security group that allows inbound HTTP traffic (port 80) and all outbound traffic, ensuring that web traffic can reach the ECS services.
-9.	ECS Cluster
+10.	ECS Cluster
 o	Resource Type: aws_ecs_cluster
 o	Description: Creates an ECS cluster for managing containerized applications, providing a managed environment for running containers.
-10.	ECS Task Definition
+11.	ECS Task Definition
 o	Resource Type: aws_ecs_task_definition
 o	Description: Defines a Fargate task with specific container configurations.
 o	Properties:
@@ -58,17 +58,17 @@ o	Properties:
 	CPU: 256 units, specifying the CPU resources for the task.
 	Memory: 512 MiB, defining the memory allocation for the task.
 	Container Definition: Defines a single container running an HTTP server with a sample HTML page.
-11.	ECS Service
+12.	ECS Service
 o	Resource Type: aws_ecs_service
 o	Description: Creates a service for the Fargate task definition, ensuring that the specified number of tasks are running.
 o	Properties:
 	Desired Count: 1 (indicates one task should be running).
 	Launch Type: FARGATE, allowing serverless container management.
 	Network Configuration: Uses the public subnets and the defined security group, assigning public IPs to the tasks.
-12.	Application Load Balancer (ALB)
+13.	Application Load Balancer (ALB)
 o	Resource Type: aws_lb
 o	Description: Creates an Application Load Balancer for routing HTTP traffic to the ECS service.
-13.	Target Group
+14.	Target Group
 o	Resource Type: aws_lb_target_group
 o	Description: Defines a target group for the ALB to direct traffic to the ECS service.
 Usage
